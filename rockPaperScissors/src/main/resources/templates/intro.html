@@ -1,0 +1,85 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<title>Rock-Paper-Scissors</title>
+</head>
+<body>
+	<h1>Let's Play Rock-Paper-Scissors!</h1>
+	<h2>
+		make a choice in the <b>You!</b> section and see what happens
+	</h2>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">You!</h5>
+					<p class="card-text" data-th-text="${you.message}">What will
+						your move be?</p>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">Which One?</button>		
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<form action="/play/rock" method="POST">
+								<button type="submit" class="dropdown-item">rock</button>
+							</form>
+							<form action="/play/paper" method="POST">
+								<button type="submit" class="dropdown-item">paper</button>
+							</form>
+							<form action="/play/scissors" method="POST">
+								<button type="submit" class="dropdown-item">scissors</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Computer</h5>
+					<span data-th-text="${comp.message}">Will the computer beat
+						you?</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	</p>
+	<span data-th-text="${round.roundMessage}">Here is where you'll
+		see the result of the round...</span>
+	<h4>Score</h4>
+	<h5 data-th-text="|You: ${you.score}|">0</h5>
+	<h5 data-th-text="|Comp: ${comp.score}|">0</h5>
+	<h6 data-th-text="${round.endMessage}">Will you want to play again
+		at the end of it all?</h6>
+	<form action="/play/anew" method="POST">
+		<button type="submit">New Round!</button>
+	</form>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous" type="text/javascript"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous" type="text/javascript"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous" type="text/javascript"></script>
+</body>
+</html>
