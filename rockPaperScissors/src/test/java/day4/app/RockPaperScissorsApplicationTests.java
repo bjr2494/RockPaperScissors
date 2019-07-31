@@ -1,4 +1,4 @@
-package day4.ap;
+package day4.app;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
