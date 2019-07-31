@@ -19,15 +19,16 @@
 <body>
 	<h1>Let's Play Rock-Paper-Scissors!</h1>
 	<h2>
-		Make a choice in the <b>You!</b> section and see what happens. First to five wins!
+		Make a choice in the <b>You!</b> section and see what happens. First
+		to five wins!
 	</h2>
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">You!</h5>
-					<p class="card-text" data-th-text="${you.message}">What will
-						your move be?</p>
+						<span class="card-text" data-th-text="${you.message}">What
+							will your move be?</span>
 					<div class="dropdown" data-th-if="${you.score < 5 and comp.score < 5}">
 						<button class="btn btn-secondary dropdown-toggle" type="button"
 							id="dropdownMenuButton" data-toggle="dropdown"
@@ -44,7 +45,8 @@
 							</form>
 						</div>
 					</div>
-					<div class="dropdown" data-th-unless="${you.score < 5 or comp.score < 5}">
+					<div class="dropdown"
+						data-th-unless="${you.score < 5 or comp.score < 5}">
 						<button class="btn btn-secondary dropdown-toggle" type="button"
 							id="dropdownMenuButton" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Which One?</button>
@@ -67,8 +69,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">Computer</h5>
-					<span data-th-text="${comp.message}">Will the computer beat
-						you?</span>
+					<span data-th-text="${comp.message}"></span>
 				</div>
 			</div>
 		</div>
@@ -87,8 +88,7 @@
 			<button type="submit">New Round!</button>
 		</form>
 	</div>
-	<div data-th-unless="${you.score == 5 or comp.score == 5}">
-	</div>
+	<div data-th-unless="${you.score == 5 or comp.score == 5}"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

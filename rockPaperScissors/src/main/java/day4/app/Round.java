@@ -129,13 +129,13 @@ public class Round {
 	}
 
 	public void startAnew() {
-		this.roundMessage = "Here we go!";
+		this.roundMessage = "Here we go again!";
 		you.setScore(0);
 		you.setChoice("");
-		you.setMessage("Make a move!");
+		you.setMessage("Make another move!");
 		comp.setScore(0);
 		comp.setChoice("");
-		comp.setMessage("Which move will I make?");
+		comp.setMessage("Which moves will I make this time?");
 		this.endMessage = "";
 	}
 
