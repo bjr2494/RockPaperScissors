@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @Component
 @Scope("session")
 public class Round {
-	
+
 	private User you = new User();
 	private User comp = new User();
 	private String roundMessage;
 	private String endMessage;
-	
+
 	public User getYou() {
 		return you;
 	}
 
-	public void setYou( @ModelAttribute("you") User you) {
+	public void setYou(@ModelAttribute("you") User you) {
 		this.you = you;
 	}
 
@@ -40,7 +40,7 @@ public class Round {
 	public void setRoundMessage(String roundMessage) {
 		this.roundMessage = roundMessage;
 	}
-	
+
 	public String getEndMessage() {
 		return endMessage;
 	}
@@ -76,7 +76,7 @@ public class Round {
 			comp.setMessage("The computer's choice is scissors");
 		return comp.getMessage();
 	}
-	
+
 	public void rock() {
 		you.setMessage("Your move is rock");
 		you.setChoice("rock");
@@ -127,7 +127,7 @@ public class Round {
 		}
 		this.scoreHandling();
 	}
-	
+
 	public void startAnew() {
 		this.roundMessage = "Here we go!";
 		you.setScore(0);
@@ -136,13 +136,14 @@ public class Round {
 		comp.setScore(0);
 		comp.setChoice("");
 		comp.setMessage("Which move will I make?");
+		this.endMessage = "";
 	}
 
 	private void tie() {
 		if (you.getChoice().equals(comp.getChoice()))
 			this.roundMessage = "A tie! Go again.";
 	}
-	
+
 	private void increaseYouScore() {
 		you.setScore(you.getScore() + 1);
 	}
@@ -150,14 +151,12 @@ public class Round {
 	private void increaseCompScore() {
 		comp.setScore(comp.getScore() + 1);
 	}
-	
+
 	private void scoreHandling() {
-		if (comp.getScore() == 5) 
+		if (comp.getScore() == 5)
 			this.endMessage = "The computer wins. Play again if you wish";
 		if (you.getScore() == 5) {
 			this.endMessage = "You win! Play again.";
 		}
 	}
-
-
 }
