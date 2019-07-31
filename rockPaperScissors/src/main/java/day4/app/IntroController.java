@@ -21,8 +21,6 @@ public class IntroController {
 		model.addAttribute("round", currentRound);
 		model.addAttribute("you", currentRound.getYou());
 		model.addAttribute("comp", currentRound.getComp());
-		model.addAttribute("openingUserMessage", "What will your move be?");
-		model.addAttribute("openingCompMessage", "Will the computer beat you?");
 		return "intro";
 	}
 	
