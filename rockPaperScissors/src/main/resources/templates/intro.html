@@ -19,7 +19,7 @@
 <body>
 	<h1>Let's Play Rock-Paper-Scissors!</h1>
 	<h2>
-		make a choice in the <b>You!</b> section and see what happens
+		Make a choice in the <b>You!</b> section and see what happens. First to five wins!
 	</h2>
 	<div class="row">
 		<div class="col-sm-6">
@@ -28,10 +28,10 @@
 					<h5 class="card-title">You!</h5>
 					<p class="card-text" data-th-text="${you.message}">What will
 						your move be?</p>
-					<div class="dropdown">
+					<div class="dropdown" data-th-if="${you.score < 5 and comp.score < 5}">
 						<button class="btn btn-secondary dropdown-toggle" type="button"
 							id="dropdownMenuButton" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Which One?</button>		
+							aria-haspopup="true" aria-expanded="false">Which One?</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<form action="/play/rock" method="POST">
 								<button type="submit" class="dropdown-item">rock</button>
@@ -40,6 +40,22 @@
 								<button type="submit" class="dropdown-item">paper</button>
 							</form>
 							<form action="/play/scissors" method="POST">
+								<button type="submit" class="dropdown-item">scissors</button>
+							</form>
+						</div>
+					</div>
+					<div class="dropdown" data-th-unless="${you.score < 5 or comp.score < 5}">
+						<button class="btn btn-secondary dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">Which One?</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<form action="/play" method="GET">
+								<button type="submit" class="dropdown-item">rock</button>
+							</form>
+							<form action="/play" method="GET">
+								<button type="submit" class="dropdown-item">paper</button>
+							</form>
+							<form action="/play" method="GET">
 								<button type="submit" class="dropdown-item">scissors</button>
 							</form>
 						</div>
@@ -65,9 +81,13 @@
 	<h5 data-th-text="|Comp: ${comp.score}|">0</h5>
 	<h6 data-th-text="${round.endMessage}">Will you want to play again
 		at the end of it all?</h6>
-	<form action="/play/anew" method="POST">
-		<button type="submit">New Round!</button>
-	</form>
+	<div data-th-if="${you.score == 5 or comp.score == 5}">
+		<form action="/play/anew" method="POST">
+			<button type="submit">New Round!</button>
+		</form>
+	</div>
+	<div data-th-unless="${you.score == 5 or comp.score == 5}">
+	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
