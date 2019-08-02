@@ -25,7 +25,7 @@ public class IntroController {
 	}
 	
 	@PostMapping("/rock")
-	public String rock() {
+	public String rock(String rock) {
 		currentRound.compChoice();
 		currentRound.compMessage();
 		currentRound.rock();
